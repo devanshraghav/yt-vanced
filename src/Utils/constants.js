@@ -2,6 +2,7 @@ export const BASE_URL = 'https://youtube138.p.rapidapi.com/auto-complete/?q=desp
 
 export const api_key = "AIzaSyBHxRlD4aVGPNVWN6Rk7UbkmXog3eb7CmM";
 
+const cors= "https://corsproxy.io/?";
 
 export const VIDEO_URL = "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=20&regionCode=IN&key=" + api_key;
 

@@ -1,9 +1,11 @@
 import {configureStore} from "@reduxjs/toolkit";
 import ToogleMenuSlice from "./ToogleMenuSlice";
+import SearchCacheSlice from "./SearchCacheSlice";
 
 const store = configureStore({
     reducer:{
-        appMenu: ToogleMenuSlice,
+        MenuToogler: ToogleMenuSlice,
+        searchCache: SearchCacheSlice,
     }
 });
 

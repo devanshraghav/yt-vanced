@@ -1,6 +1,5 @@
 import React from 'react'
 import Sidebar from './Sidebar';
-import BodyContainer from './BodyContainer';
 import { Outlet } from 'react-router-dom';
 
 const Body = () => {

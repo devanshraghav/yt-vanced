@@ -1,31 +1,39 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { closeMenu } from "../Utils/Redux/ToogleMenuSlice";
 import { api_key } from "../Utils/constants";
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+import VideoFrame from "./VideoFrame";
 
 const WatchVideo = () => {
-  const params = useParams();
-  console.log(params);
+  const [searchParams] = useSearchParams();
+  const [videoInfo, setVideoInfo] = useState([]);
+
+  const SINGLE_VIDEO_URL =
+    `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${searchParams.get(
+      "v"
+    )}&key=` + api_key;
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(closeMenu());
+    getVideo();
   }, []);
-  const SINGLE_VIDEO_URL =
-    "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=Ks-_Mh1QhMc&key=" +
-    api_key;
+
+  const getVideo = async () => {
+    const videoData = await fetch(SINGLE_VIDEO_URL);
+    const jsonData = await videoData.json();
+    setVideoInfo(jsonData?.items);
+  };
+
+  // Early return
+  if (videoInfo.length === 0) {
+    return;
+  }
 
   return (
-    <div className="border-4 border-black h-[403px] w-[716px] m-4">
-      <iframe
-        width="716"
-        height="403"
-        src="https://www.youtube.com/embed/CMmd-Ha_utw"
-        title="Nonstop Lofi - Most Relaxing Radha Krishna Song | Sleeping Peace Song | 30 Minutes With Sri Krishna"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowFullScreen
-      ></iframe>
+    <div className="h-[403px] w-[716px] m-4">
+      <VideoFrame info={videoInfo} />
     </div>
   );
 };

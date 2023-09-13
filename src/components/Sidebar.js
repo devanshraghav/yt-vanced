@@ -2,13 +2,13 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 
 const Sidebar = () => {
-  const showMenu = useSelector((store)=>store.appMenu.isMenuOpen);
+  const showMenu = useSelector((store)=>store.MenuToogler.isMenuOpen);
   // Early return
   if (!showMenu){
     return null;
   }
   return (
-    <div className='shadow-md px-4'>
+    <div className='px-4 left-0 sticky'>
       <ul className='flex flex-col gap-1 px-4'>
         <li>Home</li>
         <li>Videos</li>
