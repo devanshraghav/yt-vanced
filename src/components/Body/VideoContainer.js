@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { VIDEO_URL } from "../Utils/constants";
+import { VIDEO_URL } from "../../Utils/constants";
 import VideoCard from "./VideoCard";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { openMenu } from "../Utils/Redux/ToogleMenuSlice";
+import { openMenu } from "../../Utils/Redux/ToogleMenuSlice";
 
 const VideoContainer = () => {
   const [homepageVideos, setHomePageVideos] = useState([]);

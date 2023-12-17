@@ -1,8 +1,8 @@
 import React from 'react'
-import Sidebar from './Sidebar';
+import Sidebar from '../components/Body/Sidebar';
 import { Outlet } from 'react-router-dom';
 
-const Body = () => {
+const Home = () => {
   return (
     <div className='flex'>
         <Sidebar />
@@ -11,4 +11,4 @@ const Body = () => {
   )
 }
 
-export default Body;
+export default Home;

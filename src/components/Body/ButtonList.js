@@ -1,5 +1,5 @@
-import React from 'react'
-import Button from './Button'
+import React from 'react';
+import Button from './Button';
 
 const list = ["All", "Music", "Movies", "Gaming", "Mixes", "BGMI","React", "Live", "Web Development", "Javascript","Lo-fi"];
 const ButtonList = () => {

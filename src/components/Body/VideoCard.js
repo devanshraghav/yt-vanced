@@ -1,5 +1,5 @@
 import React from "react";
-import { USER_IMAGE } from "../Utils/constants";
+import { USER_IMAGE } from "../../Utils/constants";
 
 const VideoCard = ({ info }) => {
   const { snippet, statistics } = info;

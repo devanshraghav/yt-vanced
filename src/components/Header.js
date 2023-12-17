@@ -97,7 +97,7 @@ const Header = () => {
               {searchSuggestionData.map((suggestion, index) => {
                 return (
                   <li
-                    className="flex items-center gap-3 mt-2 hover:bg-gray-200 px-4 py-1"
+                    className="flex items-center gap-3 mt-2 hover:bg-gray-200 px-4 py-1 cursor-default"
                     key={index}
                   >
                     <BsSearch />
