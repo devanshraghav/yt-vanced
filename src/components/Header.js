@@ -39,7 +39,7 @@ const Header = () => {
 
   const getSearchSuggestionData = async () => {
     const data = await fetch(
-      "https://corsproxy.io/?http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=" +
+      "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=" +
         searchQuery
     );
     const jsonData = await data.json();
