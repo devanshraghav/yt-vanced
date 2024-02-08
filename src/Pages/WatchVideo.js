@@ -6,10 +6,10 @@ import VideoFrame from "../components/Videos/VideoFrame";
 
 // Icons
 import { USER_IMAGE } from "../Utils/constants";
-import Like from "../assests/like.png";
-import disLike from "../assests/dislike.png";
 import usenumberberFormat from "../Utils/useNumberFormat";
 import Description from "../components/Videos/Description";
+import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
+import { PiShareFat } from "react-icons/pi";
 
 const WatchVideo = () => {
   const [searchParams] = useSearchParams();
@@ -64,19 +64,27 @@ const WatchVideo = () => {
             </div>
           </div>
           <div>
-            <div className="flex gap-2 items-center bg-gray-100 rounded-full">
-              <button className="p-2 hover:bg-gray-300">
-                <img src={Like} alt="like" className="h-5" />
+            <div className="flex items-center bg-gray-100 rounded-full">
+              <button className="py-2 px-3 items-center hover:bg-gray-200  border-black rounded-l-full flex gap-2">
+                {/* <img src={Like} alt="like" className="h-5" /> */}
+                <AiOutlineLike className="h-5 w-6" />
+                {views ? <span className="">{likes}</span> : ""}
               </button>
-              {views ? <span className="">{likes}</span> : ""}
-              <button className="hover:bg-gray-300 p-2">
-                <img src={disLike} alt="dislike" className="h-5" />
+              <div className="">l</div>
+              <button className="py-2 px-4 hover:bg-gray-200  border-black rounded-r-full">
+                {/* <img src={disLike} alt="dislike" className="h-5" /> */}
+                <AiOutlineDislike className="h-5 w-6" />
               </button>
             </div>
           </div>
+          <div className="flex items-center bg-gray-100 rounded-full gap-1 py-2 px-3 hover:bg-gray-200 cursor-pointer">
+            <PiShareFat className="h-5 w-6"/>
+            <span>Share</span>
+          </div>
+          
         </div>
 
-        <Description description={description} views={views}/>
+        <Description description={description} views={views} />
       </div>
     </div>
   );
