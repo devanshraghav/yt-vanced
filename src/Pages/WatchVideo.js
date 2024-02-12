@@ -10,6 +10,8 @@ import usenumberberFormat from "../Utils/useNumberFormat";
 import Description from "../components/Videos/Description";
 import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
 import { PiShareFat } from "react-icons/pi";
+import CommentContainer from "../components/Comment/CommentContainer";
+import CommentSection from "../components/CommentSection";
 
 const WatchVideo = () => {
   const [searchParams] = useSearchParams();
@@ -28,7 +30,7 @@ const WatchVideo = () => {
 
   const getVideo = async () => {
     const videoData = await fetch(SINGLE_VIDEO_URL);
-    const jsonData = await videoData.json();
+    const jsonData = await videoData?.json();
     setVideoInfo(jsonData?.items);
   };
 
@@ -50,6 +52,7 @@ const WatchVideo = () => {
       <div className="h-[403px] w-[716px] m-4">
         <VideoFrame info={videoInfo} />
 
+        {/* Channel/video detail */}
         <div className="flex items-center justify-between">
           <div className="flex gap-3 items-center">
             <img className="w-9" src={USER_IMAGE} alt="channel-logo" />
@@ -78,13 +81,16 @@ const WatchVideo = () => {
             </div>
           </div>
           <div className="flex items-center bg-gray-100 rounded-full gap-1 py-2 px-3 hover:bg-gray-200 cursor-pointer">
-            <PiShareFat className="h-5 w-6"/>
+            <PiShareFat className="h-5 w-6" />
             <span>Share</span>
           </div>
-          
         </div>
 
         <Description description={description} views={views} />
+
+        <CommentContainer />
+
+        <CommentSection videoId={searchParams.get('v')}/>
       </div>
     </div>
   );

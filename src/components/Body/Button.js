@@ -17,14 +17,10 @@ const Button = (props) => {
 
     try{
       const videoList = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&regionCode=IN&videoCategoryId=${categoryId}&maxResults=30&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`);
-
-      console.log("videoList : ",videoList);
       if (!videoList.ok) {
         throw new Error(`HTTP error! Status: ${videoList.status}`);
       }
       const videos = await videoList?.json();
-
-      console.log("videos::  ",videos);
 
       if (videos.error) {
         throw new Error(`YouTube API error: ${videos.error.message}`);

@@ -42,7 +42,7 @@ const Header = () => {
       "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=" +
         searchQuery
     );
-    const jsonData = await data.json();
+    const jsonData = await data?.json();
     setSearchSuggestionData(jsonData[1]);
 
     // update cache

@@ -3,7 +3,6 @@ import React, { useState } from "react";
 const Description = (props) => {
   const [showFullDescription, setShowFullDescription] = useState(false);
   const { description, views } = props;
-  console.log(description, views);
   return (
     <div>
       <div className="bg-gray-200 rounded-lg pt-4 px-4 mt-5">
