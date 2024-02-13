@@ -1,22 +1,57 @@
 import React from "react";
 import { USER_IMAGE } from "../../Utils/constants";
 
-const VideoCard = ({ info }) => {
+const VideoCard = ({ info, relatedVideo }) => {
   const { snippet, statistics } = info;
   const { channelTitle, title, thumbnails } = snippet;
   return (
-    <div className="w-80 cursor-pointer flex flex-col gap-3">
+    <div
+      className={
+        relatedVideo
+          ? "w-full cursor-pointer flex gap-3"
+          : "w-80 cursor-pointer flex flex-col gap-3"
+      }
+    >
       <img
         src={thumbnails?.medium?.url}
         alt=""
-        className={`rounded-xl h-${thumbnails?.medium?.height} w-${thumbnails?.medium?.width}`}
+        // className={`rounded-xl h-${thumbnails?.medium?.height} w-${thumbnails?.medium?.width}`}
+        className={
+          relatedVideo
+            ? "rounded-xl w-40 h-24"
+            : `rounded-xl h-${thumbnails?.medium?.height} w-${thumbnails?.medium?.width}`
+        }
       />
       <div className="flex gap-2">
-        <img src={USER_IMAGE} alt="profile" className="h-8" />
-        <div className="flex flex-col">
-          <h1 className="font-semibold text-md">{title}</h1>
-          <h1 className="font-semibold text-md">{channelTitle}</h1>
-          <h1 className="font-semibold text-md">{statistics?.viewCount}</h1>
+        {relatedVideo ? (
+          ""
+        ) : (
+          <img src={USER_IMAGE} alt="profile" className="h-8" />
+        )}
+        <div className="flex flex-col gap-1">
+          <h1
+            className={
+              relatedVideo ? "font-bold text-xs" : "font-semibold text-md"
+            }
+          >
+            {title}
+          </h1>
+          <div className="">
+            <h1
+              className={
+                relatedVideo ? "font-semibold text-xs" : "font-semibold text-md"
+              }
+            >
+              {channelTitle}
+            </h1>
+            <h1
+              className={
+                relatedVideo ? "font-semibold text-xs" : "font-semibold text-md"
+              }
+            >
+              {statistics?.viewCount}
+            </h1>
+          </div>
         </div>
       </div>
     </div>

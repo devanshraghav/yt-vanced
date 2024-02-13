@@ -12,6 +12,7 @@ import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
 import { PiShareFat } from "react-icons/pi";
 import CommentContainer from "../components/Comment/CommentContainer";
 import CommentSection from "../components/CommentSection";
+import RelatedVideos from "../components/RelatedVideos";
 
 const WatchVideo = () => {
   const [searchParams] = useSearchParams();
@@ -48,7 +49,7 @@ const WatchVideo = () => {
   const comments = usenumberberFormat(commentCount);
 
   return (
-    <div>
+    <div className="flex">
       <div className="h-[403px] w-[716px] m-4">
         <VideoFrame info={videoInfo} />
 
@@ -92,6 +93,8 @@ const WatchVideo = () => {
 
         <CommentSection videoId={searchParams.get('v')}/>
       </div>
+
+      <RelatedVideos />
     </div>
   );
 };
