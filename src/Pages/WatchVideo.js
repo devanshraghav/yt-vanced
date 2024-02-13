@@ -88,7 +88,7 @@ const WatchVideo = () => {
 
         <Description description={description} views={views} />
 
-        <CommentContainer />
+        {/* <CommentContainer /> */}
 
         <CommentSection videoId={searchParams.get('v')}/>
       </div>

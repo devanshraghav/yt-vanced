@@ -18,7 +18,10 @@ const CommentSection = ({ videoId }) => {
     setCommentList(comments);
   };
 
-  console.log("commentList: ", commentList);
+
+  if (commentList.length === 0) return;
+
+  // console.log("commentList: ", commentList);
 
   const Comment = ({data}) =>{
     return (
@@ -33,17 +36,20 @@ const CommentSection = ({ videoId }) => {
   }
 
   const CommentReplies = ({replies}) =>{
-    <Comment data = {replies?.commenets?.snippet}/>
+    return replies.map((reply)=><Comment data = {reply?.snippet}/>)
   }
 
   const RenderComments = ({comments}) =>{
+    console.log(comments);
     return comments.map((comment) => {
       return (
         <div className="m-2">
           <Comment data={comment?.snippet?.topLevelComment?.snippet} />
-          <div className="border border-l-black pl-5 ml-5">
-            <CommentReplies replies={comment.replies} />
-          </div>
+
+          {comment.replies? (<div className="border border-l-black pl-5 ml-5">
+            <CommentReplies replies={comment?.replies?.comments} />
+          </div>) : "" }
+          
         </div>
       );
     });
@@ -52,7 +58,7 @@ const CommentSection = ({ videoId }) => {
   return (
     <div>
       <h1 className="text-xl font-bold">Comments:</h1>
-      <RenderComments commenets = {commentList} />
+      <RenderComments comments = {commentList} />
     </div>
   )
 };
