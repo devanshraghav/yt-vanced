@@ -49,8 +49,8 @@ const WatchVideo = () => {
   const comments = usenumberberFormat(commentCount);
 
   return (
-    <div className="flex">
-      <div className="h-[403px] w-[716px] m-4">
+    <div className="flex mx-auto">
+      <div className="w-[720px] ml-10">
         <VideoFrame info={videoInfo} />
 
         {/* Channel/video detail */}

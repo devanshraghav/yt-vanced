@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { USER_IMAGE } from "../Utils/constants";
 
 const CommentSection = ({ videoId }) => {
   const [commentList, setCommentList] = useState([]);
@@ -18,49 +17,52 @@ const CommentSection = ({ videoId }) => {
     setCommentList(comments);
   };
 
-
   if (commentList.length === 0) return;
 
-  // console.log("commentList: ", commentList);
-
-  const Comment = ({data}) =>{
+  const Comment = ({ data }) => {
     return (
       <div className="flex gap-5">
-      <img className="h-8" src={USER_IMAGE} alt="user-logo" />
-      <div className="">
-        <h1>{data.authorDisplayName}</h1>
-        <h1>{data.textDisplay}</h1>
+        <img
+          className="h-8 rounded-full"
+          src={data.authorProfileImageUrl}
+          alt="user-logo"
+        />
+        <div className="">
+          <h1 className="text-sm font-semibold">{data.authorDisplayName}</h1>
+          <h1 className="text-sm">{data.textDisplay}</h1>
+        </div>
       </div>
-    </div>
-    )
-  }
+    );
+  };
 
-  const CommentReplies = ({replies}) =>{
-    return replies.map((reply)=><Comment data = {reply?.snippet}/>)
-  }
+  const CommentReplies = ({ replies }) => {
+    return replies.map((reply) => <Comment data={reply?.snippet} />);
+  };
 
-  const RenderComments = ({comments}) =>{
-    console.log(comments);
+  const RenderComments = ({ comments }) => {
     return comments.map((comment) => {
       return (
         <div className="m-2">
           <Comment data={comment?.snippet?.topLevelComment?.snippet} />
 
-          {comment.replies? (<div className="border border-l-black pl-5 ml-5">
-            <CommentReplies replies={comment?.replies?.comments} />
-          </div>) : "" }
-          
+          {comment.replies ? (
+            <div className="border border-l-black pl-5 ml-5">
+              <CommentReplies replies={comment?.replies?.comments} />
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       );
     });
-  }
+  };
 
   return (
     <div>
       <h1 className="text-xl font-bold">Comments:</h1>
-      <RenderComments comments = {commentList} />
+      <RenderComments comments={commentList} />
     </div>
-  )
+  );
 };
 
 export default CommentSection;

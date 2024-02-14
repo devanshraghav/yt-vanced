@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 import VideoCard from "./Body/VideoCard";
 
 const RelatedVideos = () => {
-    const getVideos = useSelector((store) => store.videoList.videoLists)
+    const getVideos = useSelector((store) => store.videoList.videoLists);
+    const menuSelector = useSelector((store)=> store.MenuToogler.isMenuOpen);
     const dispatch = useDispatch();
 
     useEffect(()=>{
@@ -27,7 +28,7 @@ const RelatedVideos = () => {
   // Return JSX - video cards...
   
   return (
-    <div className="flex flex-col gap-5 p-3 m-4 bg-gray-200 overflow-hidden w-2/6 rounded-xl">
+    <div className= {`flex flex-col gap-5 p-3 bg-gray-200 overflow-hidden w-[400px] rounded-xl ${menuSelector ? "ml-4" : "ml-12" }`} >
       {getVideos.map((video) => (
         <Link to={`/watch?v=${video?.id}`} key={video?.id}>
           <VideoCard info={video} relatedVideo={true} />
