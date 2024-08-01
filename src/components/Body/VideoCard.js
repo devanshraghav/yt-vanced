@@ -9,7 +9,7 @@ const VideoCard = ({ info, relatedVideo }) => {
       className={
         relatedVideo
           ? "w-full cursor-pointer flex gap-3"
-          : "w-80 cursor-pointer flex flex-col gap-3"
+          : "md:w-80 w-full cursor-pointer flex flex-col gap-3"
       }
     >
       <img
@@ -19,7 +19,7 @@ const VideoCard = ({ info, relatedVideo }) => {
         className={
           relatedVideo
             ? "rounded-xl w-40 h-24"
-            : `rounded-xl h-${thumbnails?.medium?.height} w-${thumbnails?.medium?.width}`
+            : `md:rounded-xl h-${thumbnails?.medium?.height} w-${thumbnails?.medium?.width}`
         }
       />
       <div className="flex gap-2">

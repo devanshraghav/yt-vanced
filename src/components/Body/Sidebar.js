@@ -8,7 +8,7 @@ const Sidebar = () => {
     return null;
   }
   return (
-    <div className='px-4 left-0 sticky'>
+    <div className='hidden lg:block px-4 left-0 sticky'>
       <ul className='flex flex-col gap-1 px-4'>
         <li>Home</li>
         <li>Videos</li>

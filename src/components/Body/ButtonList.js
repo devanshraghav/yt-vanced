@@ -31,7 +31,7 @@ const ButtonList = () => {
 
 
   return (
-    <div className='flex flex-wrap'>
+    <div className='flex overflow-x-scroll no-scrollbar w-screen'>
       {
         list.map((category,index)=><Button category={category} key={index} active={activeCategory} setActiveCategory={setActiveCategory}/>)
       }

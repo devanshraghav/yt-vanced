@@ -40,7 +40,7 @@ const VideoContainer = () => {
   // Return JSX - video cards...
   
   return (
-    <div className="flex flex-wrap gap-10 p-5 m-4">
+    <div className="flex flex-wrap gap-10 md:p-5 md:m-4">
       {getVideos.map((video) => (
         <Link to={`/watch?v=${video?.id}`} key={video?.id}>
           <VideoCard info={video} relatedVideo={false} />

@@ -6,7 +6,7 @@ const BodyContainer = () => {
   return (
     <div className='flex flex-col'>
         <ButtonList />
-        {/* <VideoContainer /> */}
+        <VideoContainer />
     </div>
   )
 }
