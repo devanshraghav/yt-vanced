@@ -8,7 +8,7 @@ import BodyContainer from './components/Body/BodyContainer';
 import WatchVideo from './Pages/WatchVideo';
 import { Provider } from "react-redux";
 import store from './Utils/Redux/store';
-// import reportWebVitals from './reportWebVitals';
+
 const appRouter = createBrowserRouter([
   {
     path:"/",
