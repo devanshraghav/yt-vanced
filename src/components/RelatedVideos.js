@@ -31,7 +31,8 @@ const RelatedVideos = () => {
     <div className= {`flex flex-col gap-5 p-3 bg-gray-200 overflow-hidden w-[400px] rounded-xl ${menuSelector ? "ml-4" : "ml-12" }`} >
       {getVideos.map((video) => (
         <Link to={`/watch?v=${video?.id}`} key={video?.id}>
-          <VideoCard info={video} relatedVideo={true} />
+          {/* <VideoCard info={video} relatedVideo={true} /> */}
+          <VideoCard info={video} type={'related'} />
         </Link>
       ))}
     </div>

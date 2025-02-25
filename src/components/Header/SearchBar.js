@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import { useSelector, useDispatch } from "react-redux";
 import { cacheResults } from "../../Utils/Redux/SearchCacheSlice";
@@ -7,6 +8,7 @@ const SearchBar = ({ openSearch }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchSuggestionData, setSearchSuggestionData] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const navigate = useNavigate();
 
   const cache = useSelector((store) => store?.searchCache);
   const dispatch = useDispatch();
@@ -31,7 +33,7 @@ const SearchBar = ({ openSearch }) => {
   const getSearchSuggestionData = async () => {
     const data = await fetch(
       "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=" +
-      searchQuery
+        searchQuery
     );
     const jsonData = await data?.json();
     setSearchSuggestionData(jsonData[1]);
@@ -44,12 +46,19 @@ const SearchBar = ({ openSearch }) => {
     );
   };
 
+  const handleSuggestionClick = (suggestion) => {
+    navigate(`/results?search_query=${suggestion}`);
+  };
+
   return (
     <div className={openSearch ? "relative" : "hidden lg:block"}>
       <form
         className="flex"
         onSubmit={(e) => {
           e.preventDefault();
+          if (searchQuery !== "") {
+            navigate(`/results?search_query=${searchQuery}`);
+          }
         }}
       >
         <input
@@ -79,6 +88,7 @@ const SearchBar = ({ openSearch }) => {
                 <li
                   className="flex items-center gap-3 mt-2 hover:bg-gray-200 px-4 py-1 cursor-default"
                   key={index}
+                  onMouseDown={() => handleSuggestionClick(suggestion)}
                 >
                   <BsSearch />
                   {suggestion}
